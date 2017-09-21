@@ -1,0 +1,413 @@
+{
+    "values": {
+        "inputs": {
+            "mdp": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 41.0, 
+                            "x": 110.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "mdp", 
+                            "showSublayersDialog": true, 
+                            "default": null, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "mdp"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }
+        }, 
+        "helpContent": {}, 
+        "group": "pockmarks", 
+        "name": "modelo1", 
+        "algs": {
+            "GDALOGRRASTERCALCULATOR_1": {
+                "values": {
+                    "name": "GDALOGRRASTERCALCULATOR_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "delimitado", 
+                                "pos": {
+                                    "values": {
+                                        "y": 259.0, 
+                                        "x": 355.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 214.0, 
+                            "x": 155.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_F": null, 
+                        "BAND_F": "1", 
+                        "INPUT_D": null, 
+                        "INPUT_E": null, 
+                        "BAND_B": "1", 
+                        "INPUT_C": null, 
+                        "BAND_A": "1", 
+                        "EXTRA": null, 
+                        "RTYPE": 5, 
+                        "BAND_D": "1", 
+                        "NO_DATA": null, 
+                        "BAND_E": "1", 
+                        "FORMULA": "A-B", 
+                        "INPUT_A": {
+                            "values": {
+                                "name": "mdp"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "INPUT_B": {
+                            "values": {
+                                "alg": "SAGAFILLSINKSXXLWANGLIU_1", 
+                                "output": "FILLED"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "BAND_C": "1"
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:rastercalculator", 
+                    "description": "Raster calculator"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRPOLYGONIZE_1": {
+                "values": {
+                    "name": "GDALOGRPOLYGONIZE_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "poligonizado", 
+                                "pos": {
+                                    "values": {
+                                        "y": 548.0, 
+                                        "x": 364.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 496.0, 
+                            "x": 167.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT": {
+                            "values": {
+                                "alg": "GDALOGRSIEVE_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "FIELD": "DN"
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:polygonize", 
+                    "description": "Polygonize (raster to vector)"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISSELECTBYEXPRESSION_1": {
+                "values": {
+                    "name": "QGISSELECTBYEXPRESSION_1", 
+                    "paramsFolded": true, 
+                    "outputs": {}, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 577.0, 
+                            "x": 168.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "LAYERNAME": {
+                            "values": {
+                                "alg": "GDALOGRPOLYGONIZE_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "EXPRESSION": "$area/$perimeter >= 4.5 AND  \"DN\" = 1", 
+                        "METHOD": 0
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:selectbyexpression", 
+                    "description": "Select by expression"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRSIEVE_1": {
+                "values": {
+                    "name": "GDALOGRSIEVE_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "filtrado", 
+                                "pos": {
+                                    "values": {
+                                        "y": 452.0, 
+                                        "x": 356.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 400.0, 
+                            "x": 163.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "THRESHOLD": 100.0, 
+                        "INPUT": {
+                            "values": {
+                                "alg": "SAGARECLASSIFYGRIDVALUES_1", 
+                                "output": "RESULT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "CONNECTIONS": 0
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:sieve", 
+                    "description": "Sieve"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "SAGAFILLSINKSXXLWANGLIU_1": {
+                "values": {
+                    "name": "SAGAFILLSINKSXXLWANGLIU_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "FILLED": {
+                            "values": {
+                                "description": "relleno", 
+                                "pos": {
+                                    "values": {
+                                        "y": 156.0, 
+                                        "x": 354.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": false, 
+                    "pos": {
+                        "values": {
+                            "y": 111.0, 
+                            "x": 154.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "MINSLOPE": 0.01, 
+                        "ELEV": {
+                            "values": {
+                                "name": "mdp"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "saga:fillsinksxxlwangliu", 
+                    "description": "Fill sinks xxl (wang & liu)"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISSAVESELECTEDFEATURES_1": {
+                "values": {
+                    "name": "QGISSAVESELECTEDFEATURES_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "seleccionados", 
+                                "pos": {
+                                    "values": {
+                                        "y": 692.4508911242187, 
+                                        "x": 362.89943448828103
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 654.4863932375, 
+                            "x": 169.89943448828114
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISSELECTBYEXPRESSION_1", 
+                                "output": "RESULT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:saveselectedfeatures", 
+                    "description": "Save selected features"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "SAGARECLASSIFYGRIDVALUES_1": {
+                "values": {
+                    "name": "SAGARECLASSIFYGRIDVALUES_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "RESULT": {
+                            "values": {
+                                "description": "reclas", 
+                                "pos": {
+                                    "values": {
+                                        "y": 353.0, 
+                                        "x": 356.0
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 308.0, 
+                            "x": 156.0
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "RNEW": 2.0, 
+                        "SOPERATOR": 0, 
+                        "OLD": 0.0, 
+                        "MIN": 0.0, 
+                        "MAX": 1.0, 
+                        "ROPERATOR": 0, 
+                        "TOPERATOR": 0, 
+                        "NODATAOPT      ": true, 
+                        "OTHEROPT       ": true, 
+                        "RETAB": "-1.5,0,0,-50,-1.5,1", 
+                        "OTHERS": 0.0, 
+                        "NEW": 1.0, 
+                        "INPUT": {
+                            "values": {
+                                "alg": "GDALOGRRASTERCALCULATOR_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "NODATA": 0.0, 
+                        "METHOD": 2
+                    }, 
+                    "active": true, 
+                    "consoleName": "saga:reclassifygridvalues", 
+                    "description": "Reclassify values"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRBUFFERVECTORS_1": {
+                "values": {
+                    "name": "GDALOGRBUFFERVECTORS_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "Final_a", 
+                                "pos": {
+                                    "values": {
+                                        "y": 796.4863932375001, 
+                                        "x": 367.89943448828114
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 750.4863932375001, 
+                            "x": 169.89943448828114
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "DISTANCE": 8.0, 
+                        "MULTI": true, 
+                        "DISSOLVEALL": true, 
+                        "GEOMETRY": "geometry", 
+                        "FIELD": "DN", 
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISSAVESELECTEDFEATURES_1", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "OPTIONS": null
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:buffervectors", 
+                    "description": "Buffer vectors"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }
+        }
+    }, 
+    "class": "processing.modeler.ModelerAlgorithm.ModelerAlgorithm"
+}

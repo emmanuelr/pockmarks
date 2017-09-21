@@ -1,0 +1,825 @@
+{
+    "values": {
+        "inputs": {
+            "finalan": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 33.669637280618595, 
+                            "x": 212.1622933771929
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "finalan", 
+                            "shapetype": [
+                                2
+                            ], 
+                            "default": null, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "final_a_n"
+                        }, 
+                        "class": "processing.core.parameters.ParameterVector"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }, 
+            "mdp": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 21.80382862899595, 
+                            "x": 682.914222022283
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "mdp", 
+                            "showSublayersDialog": true, 
+                            "default": null, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "mdp"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }, 
+            "delimitado": {
+                "values": {
+                    "pos": {
+                        "values": {
+                            "y": 136.60664096442045, 
+                            "x": 220.68172093045084
+                        }, 
+                        "class": "point"
+                    }, 
+                    "param": {
+                        "values": {
+                            "isAdvanced": false, 
+                            "name": "delimitado", 
+                            "showSublayersDialog": true, 
+                            "default": null, 
+                            "value": null, 
+                            "exported": null, 
+                            "hidden": false, 
+                            "optional": false, 
+                            "description": "delimitado"
+                        }, 
+                        "class": "processing.core.parameters.ParameterRaster"
+                    }
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.ModelerParameter"
+            }
+        }, 
+        "helpContent": {}, 
+        "group": "pockmarks", 
+        "name": "modelo2", 
+        "algs": {
+            "SAGAADDPOINTATTRIBUTESTOPOLYGONS_1": {
+                "values": {
+                    "name": "SAGAADDPOINTATTRIBUTESTOPOLYGONS_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "finalc", 
+                                "pos": {
+                                    "values": {
+                                        "y": 907.0705679099651, 
+                                        "x": 724.5169407594847
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 855.317284231462, 
+                            "x": 724.8072339194505
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT": {
+                            "values": {
+                                "alg": "QGISEXPORTADDGEOMETRYCOLUMNS_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "ADD_LOCATION_INFO": false, 
+                        "POINTS": {
+                            "values": {
+                                "alg": "QGISPOLYGONCENTROIDS_1", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "FIELDS": "angulos"
+                    }, 
+                    "active": true, 
+                    "consoleName": "saga:addpointattributestopolygons", 
+                    "description": "Add point attributes to polygons"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRRASTERCALCULATOR_1": {
+                "values": {
+                    "name": "GDALOGRRASTERCALCULATOR_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "tasaprof", 
+                                "pos": {
+                                    "values": {
+                                        "y": 525.5343838626382, 
+                                        "x": 480.0526891876584
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 478.20517566878243, 
+                            "x": 479.16995668627055
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_F": null, 
+                        "BAND_F": "1", 
+                        "INPUT_D": null, 
+                        "INPUT_E": null, 
+                        "BAND_B": "1", 
+                        "INPUT_C": null, 
+                        "BAND_A": "1", 
+                        "RTYPE": 5, 
+                        "BAND_D": "1", 
+                        "NO_DATA": null, 
+                        "BAND_E": "1", 
+                        "FORMULA": "B/A", 
+                        "INPUT_A": {
+                            "values": {
+                                "alg": "GDALOGRRASTERIZE_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "INPUT_B": {
+                            "values": {
+                                "alg": "GDALOGRCLIPRASTERBYMASKLAYER_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "BAND_C": "1", 
+                        "EXTRA": null
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:rastercalculator", 
+                    "description": "Raster calculator"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISZONALSTATISTICS_2": {
+                "values": {
+                    "name": "QGISZONALSTATISTICS_2", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "prof_may", 
+                                "pos": {
+                                    "values": {
+                                        "y": 147.09770265008444, 
+                                        "x": 711.5284468697425
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": false, 
+                    "pos": {
+                        "values": {
+                            "y": 97.94105652207182, 
+                            "x": 711.5229547828726
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_RASTER": {
+                            "values": {
+                                "name": "mdp"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "COLUMN_PREFIX": "orig_", 
+                        "RASTER_BAND": 1.0, 
+                        "GLOBAL_EXTENT": false, 
+                        "INPUT_VECTOR": {
+                            "values": {
+                                "alg": "QGISZONALSTATISTICS_1", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:zonalstatistics", 
+                    "description": "Zonal Statistics"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISZONALSTATISTICS_1": {
+                "values": {
+                    "name": "QGISZONALSTATISTICS_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "estadistica", 
+                                "pos": {
+                                    "values": {
+                                        "y": 284.1026197967724, 
+                                        "x": 471.77231586077824
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 234.41328140501082, 
+                            "x": 470.8598547255839
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_RASTER": {
+                            "values": {
+                                "alg": "GDALOGRCLIPRASTERBYMASKLAYER_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "COLUMN_PREFIX": "intern_", 
+                        "RASTER_BAND": 1.0, 
+                        "GLOBAL_EXTENT": false, 
+                        "INPUT_VECTOR": {
+                            "values": {
+                                "name": "finalan"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:zonalstatistics", 
+                    "description": "Zonal Statistics"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISORIENTEDMINIMUMBOUNDINGBOX_1": {
+                "values": {
+                    "name": "QGISORIENTEDMINIMUMBOUNDINGBOX_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "orientacion", 
+                                "pos": {
+                                    "values": {
+                                        "y": 525.8111130841212, 
+                                        "x": 715.9338074203495
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 474.7658747566354, 
+                            "x": 717.6760442787627
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "BY_FEATURE": true, 
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISEXPORTADDGEOMETRYCOLUMNS_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:orientedminimumboundingbox", 
+                    "description": "Oriented minimum bounding box"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISSELECTBYATTRIBUTE_1": {
+                "values": {
+                    "name": "QGISSELECTBYATTRIBUTE_1", 
+                    "paramsFolded": true, 
+                    "outputs": {}, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 769.3184666398367, 
+                            "x": 486.5841403166879
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "OPERATOR": 0, 
+                        "INPUT": {
+                            "values": {
+                                "alg": "GRASS7R.TO.VECT_1", 
+                                "output": "output"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "VALUE": "1", 
+                        "FIELD": "value"
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:selectbyattribute", 
+                    "description": "Select by attribute"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRRASTERIZE_1": {
+                "values": {
+                    "name": "GDALOGRRASTERIZE_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "rasterizado", 
+                                "pos": {
+                                    "values": {
+                                        "y": 404.71327619587464, 
+                                        "x": 472.89195167060325
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 353.9650383717433, 
+                            "x": 471.84977191352436
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "ZLEVEL": 6.0, 
+                        "DIMENSIONS": 1, 
+                        "EXTRA": null, 
+                        "BIGTIFF": 0, 
+                        "RTYPE": 5, 
+                        "COMPRESS": 4, 
+                        "FIELD": "intern_min", 
+                        "HEIGHT": 2.0, 
+                        "WIDTH": 2.0, 
+                        "TILED": false, 
+                        "RAST_EXT": null, 
+                        "JPEGCOMPRESSION": 75.0, 
+                        "INPUT": {
+                            "values": {
+                                "alg": "QGISZONALSTATISTICS_1", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "TFW": false, 
+                        "NO_DATA": null, 
+                        "PREDICTOR": 1.0
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:rasterize", 
+                    "description": "Rasterize (vector to raster)"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISEXPORTADDGEOMETRYCOLUMNS_1": {
+                "values": {
+                    "name": "QGISEXPORTADDGEOMETRYCOLUMNS_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "final_b", 
+                                "pos": {
+                                    "values": {
+                                        "y": 401.57724283335597, 
+                                        "x": 719.6227099756529
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 352.1395951359708, 
+                            "x": 718.0118205277024
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT": {
+                            "values": {
+                                "alg": "QGISFIELDCALCULATOR_1", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "CALC_METHOD": 1
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:exportaddgeometrycolumns", 
+                    "description": "Export/Add geometry columns"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISFIELDCALCULATOR_1": {
+                "values": {
+                    "name": "QGISFIELDCALCULATOR_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "prof_pock", 
+                                "pos": {
+                                    "values": {
+                                        "y": 281.53177713560615, 
+                                        "x": 714.4938946837578
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 229.01778230582812, 
+                            "x": 716.3791021038794
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "FIELD_TYPE": 0, 
+                        "NEW_FIELD": true, 
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISZONALSTATISTICS_2", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "FIELD_PRECISION": 3.0, 
+                        "FIELD_LENGTH": 10.0, 
+                        "FORMULA": "orig_min-intern_min", 
+                        "FIELD_NAME": "prof_pock"
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:fieldcalculator", 
+                    "description": "Field calculator"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISFIELDCALCULATOR_2": {
+                "values": {
+                    "name": "QGISFIELDCALCULATOR_2", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "orientacion2", 
+                                "pos": {
+                                    "values": {
+                                        "y": 661.6301465395031, 
+                                        "x": 717.3517911072574
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 612.1032316173284, 
+                            "x": 717.020921808331
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "FIELD_TYPE": 0, 
+                        "NEW_FIELD": true, 
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISORIENTEDMINIMUMBOUNDINGBOX_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "FIELD_PRECISION": 3.0, 
+                        "FIELD_LENGTH": 10.0, 
+                        "FORMULA": "CASE \nWHEN \"HEIGHT\" <  \"WIDTH\" AND \"ANGLE\" < 0 THEN 90 +abs(  \"ANGLE\" ) \nWHEN \"HEIGHT\" <  \"WIDTH\" AND \"ANGLE\" > 0 THEN 270 - \"ANGLE\" \nWHEN \"HEIGHT\" >  \"WIDTH\" AND \"ANGLE\" < 0 THEN abs(\"ANGLE\")\nWHEN \"HEIGHT\" >  \"WIDTH\" AND \"ANGLE\" > 0 THEN \"ANGLE\"\nEND", 
+                        "FIELD_NAME": "angulos"
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:fieldcalculator", 
+                    "description": "Field calculator"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISSAVESELECTEDFEATURES_1": {
+                "values": {
+                    "name": "QGISSAVESELECTEDFEATURES_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "prof_max", 
+                                "pos": {
+                                    "values": {
+                                        "y": 909.3623393356938, 
+                                        "x": 488.86341193823955
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 859.2500913693038, 
+                            "x": 492.2168640635606
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISSELECTBYATTRIBUTE_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:saveselectedfeatures", 
+                    "description": "Save selected features"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GRASS7R.TO.VECT_1": {
+                "values": {
+                    "name": "GRASS7R.TO.VECT_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "output": {
+                            "values": {
+                                "description": "tasaprof", 
+                                "pos": {
+                                    "values": {
+                                        "y": 657.1079053444705, 
+                                        "x": 485.38051578539785
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 609.1865995936676, 
+                            "x": 479.42523300105915
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "input": {
+                            "values": {
+                                "alg": "GDALOGRRASTERCALCULATOR_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }, 
+                        "GRASS_REGION_PARAMETER": null, 
+                        "type": 1, 
+                        "GRASS_OUTPUT_TYPE_PARAMETER": 0, 
+                        "-s": false
+                    }, 
+                    "active": true, 
+                    "consoleName": "grass7:r.to.vect", 
+                    "description": "r.to.vect - Converts a raster into a vector layer."
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "GDALOGRCLIPRASTERBYMASKLAYER_1": {
+                "values": {
+                    "name": "GDALOGRCLIPRASTERBYMASKLAYER_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT": {
+                            "values": {
+                                "description": "cortado", 
+                                "pos": {
+                                    "values": {
+                                        "y": 146.31841163182418, 
+                                        "x": 466.7238734488096
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 97.2987540664719, 
+                            "x": 465.99947892946886
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "ZLEVEL": 6.0, 
+                        "CROP_TO_CUTLINE": false, 
+                        "RTYPE": 5, 
+                        "BIGTIFF": 0, 
+                        "ALPHA_BAND": false, 
+                        "EXTRA": null, 
+                        "MASK": {
+                            "values": {
+                                "name": "finalan"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "COMPRESS": 4, 
+                        "KEEP_RESOLUTION": false, 
+                        "TILED": false, 
+                        "JPEGCOMPRESSION": 75.0, 
+                        "INPUT": {
+                            "values": {
+                                "name": "delimitado"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromInput"
+                        }, 
+                        "TFW": false, 
+                        "NO_DATA": null, 
+                        "PREDICTOR": 1.0
+                    }, 
+                    "active": true, 
+                    "consoleName": "gdalogr:cliprasterbymasklayer", 
+                    "description": "Clip raster by mask layer"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISPOLYGONCENTROIDS_2": {
+                "values": {
+                    "name": "QGISPOLYGONCENTROIDS_2", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "centroides", 
+                                "pos": {
+                                    "values": {
+                                        "y": 1032.9286359663756, 
+                                        "x": 724.3238514819127
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 982.1355151143161, 
+                            "x": 716.8003691541596
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "SAGAADDPOINTATTRIBUTESTOPOLYGONS_1", 
+                                "output": "OUTPUT"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:polygoncentroids", 
+                    "description": "Polygon centroids"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }, 
+            "QGISPOLYGONCENTROIDS_1": {
+                "values": {
+                    "name": "QGISPOLYGONCENTROIDS_1", 
+                    "paramsFolded": true, 
+                    "outputs": {
+                        "OUTPUT_LAYER": {
+                            "values": {
+                                "description": "orientacion", 
+                                "pos": {
+                                    "values": {
+                                        "y": 778.340852184343, 
+                                        "x": 721.525484694416
+                                    }, 
+                                    "class": "point"
+                                }
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ModelerOutput"
+                        }
+                    }, 
+                    "outputsFolded": true, 
+                    "pos": {
+                        "values": {
+                            "y": 728.2566795708271, 
+                            "x": 715.155145547385
+                        }, 
+                        "class": "point"
+                    }, 
+                    "dependencies": [], 
+                    "params": {
+                        "INPUT_LAYER": {
+                            "values": {
+                                "alg": "QGISFIELDCALCULATOR_2", 
+                                "output": "OUTPUT_LAYER"
+                            }, 
+                            "class": "processing.modeler.ModelerAlgorithm.ValueFromOutput"
+                        }
+                    }, 
+                    "active": true, 
+                    "consoleName": "qgis:polygoncentroids", 
+                    "description": "Polygon centroids"
+                }, 
+                "class": "processing.modeler.ModelerAlgorithm.Algorithm"
+            }
+        }
+    }, 
+    "class": "processing.modeler.ModelerAlgorithm.ModelerAlgorithm"
+}
